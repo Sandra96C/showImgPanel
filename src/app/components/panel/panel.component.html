@@ -1,0 +1,14 @@
+<div class="container mx-auto mt-8 gap-4">
+    <div class="gap-4 columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6">
+        @for (skeleton of skeletons; track $index) {
+        <!-- Skeleton loader -->
+        <div [class.hidden]="!isLoading" class="m-5 bg-gray-200 h-48 rounded animate-pulse"></div>
+        }
+        @for (img of images; track img.id; let idx = $index) {
+        <!-- Imagenes reales -->
+        <img (click)="removeImg(idx)" (load)="onImageLoad($event)" [src]="img.download_url" [alt]="img.url"
+            class="m-5 pointer object-cover w-full h-48 rounded opacity-0 transition-opacity duration-500"
+            [class.hidden]="isLoading" />
+        }
+    </div>
+</div>
