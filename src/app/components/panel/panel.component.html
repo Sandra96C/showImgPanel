@@ -1,13 +1,32 @@
-<div class="container mx-auto mt-8 gap-4">
+<!--<div class="container mx-auto mt-8 gap-4">
     <div class="gap-4 columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6">
-        @for (img of images; track img.id; let idx = $index) {-->
-        <!-- Skeleton loader -->
+        @for (img of images; track img.id; let idx = $index) {
+        <!-- Skeleton loader 
         <div [ngClass]="{'hidden':img.isLoaded}"
-            class="m-5 bg-gray-200 rounded animate-pulse h-48 opacity-100 transition-opacity duration-500"></div>-->
-        <!-- Imagenes reales -->
+            class="m-5 bg-gray-200 rounded animate-pulse h-48 opacity-100 transition-opacity duration-700"></div>
+        <!-- Imagenes reales 
         <img (click)="removeImg(idx)" (load)="onImageLoad($event); img.isLoaded=true" [src]="img.download_url"
-            [alt]="img.url" class="m-5 pointer object-cover w-full rounded opacity-0 transition-opacity duration-500"
+            [alt]="img.url" class="m-5 pointer object-cover w-full rounded opacity-0 transition-opacity duration-1000"
             [ngClass]="{'hidden': !img.isLoaded}" load="lazy" />
+        }
+    </div>
+</div>-->
+
+<div class="grid row container mx-auto mt-8 gap-4">
+    <div class="gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <!-- Iterar sobre las imágenes -->
+        @for (img of images; track img.id; let idx = $index) {
+        <!-- Skeleton loader -->
+        <div [ngClass]="{'hidden': img.isLoaded}"
+            class="m-5 bg-gray-200 rounded animate-pulse h-48 opacity-100 transition-opacity duration-1000"></div>
+
+        <!-- Imagen real -->
+        <div class="relative w-full h-48">
+            <img (click)="removeImg(idx)" (load)="onImageLoad($event); img.isLoaded=true" [src]="img.download_url"
+                [alt]="img.url"
+                class="pointer object-cover w-full h-full rounded opacity-0 transition-opacity duration-1000"
+                [ngClass]="{'hidden': !img.isLoaded}" />
+        </div>
         }
     </div>
 </div>
