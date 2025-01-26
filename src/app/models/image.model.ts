@@ -5,4 +5,5 @@ export interface ImageObj {
     height: number,
     download_url: string,
     url: string
+    isLoaded?: boolean
 }

@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ImageObj } from '../../models/image.model';
 import { PicsumService } from '../../services/picsum.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-panel',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css',
 })
@@ -23,7 +24,8 @@ export class PanelComponent implements OnInit {
   @HostListener("window:scroll", []) onWindowScroll() {
     if (window.innerHeight + window.scrollY > document.body.offsetHeight) {
       console.log('CARGA IMG');
-
+      this.page++
+      this.getImageList();
     }
   }
 
@@ -36,7 +38,10 @@ export class PanelComponent implements OnInit {
   getImageList() {
     this.picsumService.getImages(this.page).subscribe(
       (data) => {
-        this.images.push(...data);
+        this.images.push(...(data.map((image: ImageObj) => ({
+          ...image,
+          isLoaded: false,
+        }))));
         console.log({ data });
         return data
       }
@@ -56,4 +61,5 @@ export class PanelComponent implements OnInit {
   removeImg(index: number) {
     this.images.splice(index, 1);
   }
+
 }
