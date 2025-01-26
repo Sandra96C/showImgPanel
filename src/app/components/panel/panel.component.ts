@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { ImageObj } from '../../models/image.model';
 import { PicsumService } from '../../services/picsum.service';
 import { NgClass } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-panel',
@@ -16,8 +17,9 @@ export class PanelComponent implements OnInit {
   skeletons: any[] = new Array(30);
   isLoading: boolean = true;
   loadedImages: number = 0;
-
+  showGrid: boolean = false;
   constructor(
+    private route: ActivatedRoute,
     private picsumService: PicsumService
   ) { }
 
@@ -30,6 +32,12 @@ export class PanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.url.subscribe(url => {
+      if ((url[0]?.path).toLowerCase() != 'columns') {
+        this.showGrid = true;
+      }
+    });
+
     this.getImageList();
 
     console.log(this.images);
