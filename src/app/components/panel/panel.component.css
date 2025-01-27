@@ -7,6 +7,5 @@ html {
 }
 
 img:hover {
-  border: 3rem black;
   filter: brightness(0.5);
 }
