@@ -1,7 +1,12 @@
 html {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+img:hover {
+  border: 3rem black;
+  filter: brightness(0.5);
 }

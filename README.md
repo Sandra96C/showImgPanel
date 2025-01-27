@@ -1,59 +1,47 @@
-# ShowImagesPanel
+# Show Img Panel
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+Proyecto para mostrar imágenes de manera interactiva. Esta aplicación está construida con **Angular** y utiliza **Tailwind CSS** para el diseño.
 
-## Development server
+## Descripción
 
-To start a local development server, run:
+El proyecto `Show Img Panel` permite visualizar imágenes de manera ordenada en una interfaz de usuario limpia. 
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Características
 
-## Code scaffolding
+- Interfaz limpia y moderna con **Tailwind CSS**.
+- Imágenes cargadas de manera eficiente.
+- Compatible con dispositivos móviles.
+- Despliegue en **GitHub Pages**.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Tecnologías utilizadas
 
-```bash
-ng generate component component-name
-```
+- **Angular**: Framework de JavaScript utilizado para construir la aplicación.
+- **Tailwind CSS**: Framework de diseño para crear interfaces de usuario responsivas.
+- **GitHub Pages**: Plataforma para el despliegue de aplicaciones web estáticas.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Instalación
 
-```bash
-ng generate --help
-```
+Para instalar y ejecutar este proyecto en tu máquina local, sigue estos pasos:
 
-## Building
+1. Clona el repositorio:
+   git clone https://github.com/Sandra96C/showImgPanel.git
+   cd showImgPanel
 
-To build the project run:
+2. Instala las dependencias:   
+   npm install
 
-```bash
-ng build
-```
+3. Arranca el proyecto:
+   ng serve
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. Despliega el proyecto:
+  ng deploy --base-href="/showImgPanel/"
+  
+  El proyecto estará disponible en la siguiente URL: https://sandra96c.github.io/showImgPanel/
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Rutas
 
-```bash
-ng test
-```
+- /grid: Muestra las imágenes en una cuadrícula. Cuando llegas al final, un hostListener llama nuevamente a la función para cargar más imágenes, que se añaden al final de la página.
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- /columns: Muestra las imágenes en columnas, respetando el tamaño original de las imágenes (similar a MasonryJS). Sin embargo, al cargar nuevas imágenes, las columnas se actualizan, las imágenes se reordenan y las nuevas imágenes aparecen al inicio de la página.
